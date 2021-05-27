@@ -1,7 +1,5 @@
 @extends('layout.backend.Master')
-
 @section('title', 'Danh sách nhân viên')
-
 @section('main')
      <!-- Start right Content here -->
             <!-- ============================================================== -->
@@ -68,8 +66,6 @@
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
-
-
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">

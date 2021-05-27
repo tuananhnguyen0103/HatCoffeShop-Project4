@@ -4,7 +4,6 @@
 
 @section('main')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
 
@@ -25,7 +24,6 @@
                 </div>
             </div>
             <!-- end page title -->
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -41,13 +39,9 @@
                                 </div>
 
                             </div>
-
-
-
                             <table  id="example" class="table table-striped table-bordered" style="width:100%; ">
                                 <thead>
                                     <tr>
-                                        <th>Id </th>
                                         <th >STT</th>
                                         <th >Khách Hàng</th>
                                         <th >Điện thoại</th>
@@ -64,7 +58,6 @@
 
 
                                     <tr>
-                                        <td>{{$bill->id}}</td>
                                         <td>{{ $stt++ }}</td>
                                         <td>{{ $bill->customer_name }}</td>
                                         <td>{{ $bill->customer_phone_number }}</td>

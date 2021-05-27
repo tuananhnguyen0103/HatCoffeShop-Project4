@@ -63,7 +63,7 @@
                         @if (Session()->get('role')==1||Session()->get('role')==4)
                             <li><a href="{{route('get-all-bill-shipping')}}" key="t-exchange">Đơn hàng đang giao</a></li>
                         @endif
-                        @if (Session()->get('role')==1||Session()->get('role')==2||Session()->get('role')==4)
+                        @if (Session()->get('role')==1||Session()->get('role')==2)
                             <li><a href="{{route('get-all-bill-cancel')}}" key="t-exchange">Đơn hàng hủy</a></li>
                         @endif
                         @if (Session()->get('role')==1||Session()->get('role')==2||Session()->get('role')==3||Session()->get('role')==4)

@@ -6,14 +6,19 @@ $.ajaxSetup({
 
 // Biến lưu các id định xóa
 var array = [] ;
+// arrayCur là mảng các sản phẩm còn lại trong giỏ hàng
 var arrayCur = [] ;
 // var arrayQty
+// Tham số truyền vào là id của sản phẩm của giỏ hàng, và vị trí của phần tử đó
 function deleteProductInCart(id,element){
+    // Xóa đi row chứa phần tử này
     $(element).parents().eq(2).remove();
     toastr.success("Xóa thành công vui lòng cập nhật lại giỏ hàng");
     //console.log( $(element).parents().eq(2).find('.update-quantity').val())
+    // Lấy giá trị của phần tử xóa bao gồm id của phần tử và số lượng của phần tử
     var elementCart = [id,$(element).parents().eq(2).find('.update-quantity').val()]
 
+    // Thêm các phần tử xóa vào trong giỏ hàng.
     array.push(elementCart);
     console.log(array);
 }
@@ -21,12 +26,16 @@ function deleteProductInCart(id,element){
 $('#cart-client').submit(function(){
     // Chặn ngăn trang chuyển tiếp
     event.preventDefault();
-    // Lấy tất cả dữ liệu trong from vào trong biến data
+    // Duyệt tất cả các thẻ input trong giỏ hàng
     $("form#cart-client input").each(function(){
-        var input = $(this); // This is the jquery object of the input, do what you will
+        var input = $(this);
         console.log(input);
         console.log(input.attr('name'));
         console.log(input.val());
+        // Tìm input có tên là name xong sau đó thêm giá trị của input này vào trong mảng arrayCur
+        // Thêm phần tử của arrayCur là 1 mảng gồm 2 phần tử,
+        // phần tử đầu tiên là id của hàng trong giỏ hàng thông qua thuộc tính name
+        // Phần tử thứ 2 là số lượng của phần tử đó trong giỏ hàng
         var value = arrayCur.push([input.attr('name'),input.val()]);
 
         // arrayCur.push((input.attr('name')));

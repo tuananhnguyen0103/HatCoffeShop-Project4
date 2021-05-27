@@ -1,13 +1,9 @@
 @extends('layout.backend.Master')
-
 @section('title', 'Danh sách danh mục')
-
 @section('main')
 <div class="main-content">
-
     <div class="page-content">
         <div class="container-fluid">
-
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -25,7 +21,6 @@
                 </div>
             </div>
             <!-- end page title -->
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -36,13 +31,9 @@
                                     <h4 class="card-title" style="margin: 0px 2rem;">Thêm danh mục</h4>
                                     <a href="{{url(route('create-categories'))}}" target="_blank">
                                         <i class="bx bx-add-to-queue" style="font-size: 1rem"></i>
-
                                     </a>
                                 </div>
-
                             </div>
-
-
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
@@ -52,12 +43,9 @@
                                         <th style="width: 10%">Chức năng</th>
                                     </tr>
                                     </thead>
-
                                     <tbody>
                                         <?php $stt = 1 ?>
                                     @foreach ( $category as $c )
-
-
                                     <tr>
                                         <td>{{ $stt++ }}</td>
                                         <td>{{ $c->categories_name }}</td>
@@ -65,7 +53,7 @@
                                         <textarea style="border: none;overflow: hidden; background-color: inherit;resize: none;"  name="message" rows="5" cols="30" >{{$c->categories_description}}</textarea>
 
                                         </td>
-                                        <td style="display: flex;padding: 0.5rem .5rem;">
+                                        <td style="display: flex;padding: 4rem .5rem;">
                                             <a style="width: 50%; " onclick="softDelete({{$c->id}},this)" ><i style="font-size: 20px;" class="mdi mdi-trash-can-outline"></i></a>
 
                                             <a style="width: 50%; " href="{{url(route('update-categories',$c->id))}}"><i style="font-size: 20px;" class="mdi mdi-file-edit"></i></a>

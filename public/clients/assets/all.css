@@ -9955,7 +9955,7 @@ input {
       color: #ffcf3b; }
     .header.-scroll_white.-active li a, .header.-scroll_white.-hoverActive li a {
       color: #000; }
-      
+
     .header.-scroll_white.-active li.active a, .header.-scroll_white.-hoverActive li.active a {
       text-shadow: 0px 0 0 #000;
       color: #000; }

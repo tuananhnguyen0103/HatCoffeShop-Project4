@@ -77,9 +77,8 @@
                                         </td>
                                         <td>{{ $p->sale_price_amount }}</td>
                                         <td>{{ number_format($p->sale_price_values)}} VNĐ</td>
-                                        <td style="display: flex;padding: 40% 20%;">
+                                        <td style="display: flex;padding: 58% 20%;">
                                             <a style="width: 50%; " onclick="softDeleteProduct({{$p->id}},this)"><i style="font-size: 20px;" class="mdi mdi-trash-can-outline"></i></a>
-                                            <a style="width: 50%; " href="{{url(route('renametoSlug'))}}"><i style="font-size: 20px;" class="mdi mdi-file-edit"></i>Hay</a>
                                             <a style="width: 50%; " href="{{(route('update-product', $p->id))}}"><i style="font-size: 20px;" class="mdi mdi-file-edit"></i></a>
                                         </td>
                                     </tr>

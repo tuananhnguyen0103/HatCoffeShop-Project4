@@ -30,26 +30,6 @@
 	<div class="scroll_top">
         <i class="fa fa-chevron-up"></i>
     </div>
-	<!-- Modal -->
-	{{-- <div class="modal fade" id="gallery_modal" tabindex="-1" role="dialog" >
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        	<span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
-    	</button>
-	      <div class="modal-body">
-	       	<img src="index.html" alt="" class="gallery_modal_img">
-	      </div>
-	      <div class="gallery_modal-arrows">
-	            <a href="javascript:void(0);" class="gallery_modal-arrow prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-	            <a href="javascript:void(0);" class="gallery_modal-arrow next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-	        </div>
-	    </div>
-	  </div>
-	</div> --}}
-
-
-
 	<script src="{{ url('/') }}/clients/assets/js/moment-with-locales.min.js"></script>
 	<script src="{{ url('/') }}/clients/assets/js/bootstrap-select.min.js"></script>
 	<script src="{{ url('/') }}/clients/assets/js/shuffle.min.js"></script>
@@ -70,9 +50,3 @@
 <!-- Mirrored from ndc.krizantos.com/home_02.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 May 2021 04:19:53 GMT -->
 </html>
 
-
-<!-- 1. gallery-masonry - https://vestride.github.io/Shuffle/
-2. bootstrap - http://getbootstrap.com/
-3. bootstrap datepicker - https://eonasdan.github.io/bootstrap-datetimepicker/
-4. bootstrap select - https://silviomoreto.github.io/bootstrap-select/
-5. slick slider  - http://kenwheeler.github.io/slick/ -->

@@ -16,7 +16,8 @@ $('#form-login').submit(function(){
                 window.location.href='/admin.shop'
             }
             else{
-                window.location.href='/admin.shop/register'
+                // window.location.href='/admin.shop/register'
+                toastr.error("Tài khoản mật khẩu của bạn không chính xác");
             }
         },
         error:function(resultController){

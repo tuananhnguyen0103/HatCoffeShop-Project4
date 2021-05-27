@@ -2,13 +2,6 @@
 @section('title', 'Hạt Cafe')
 @section('main')
 
-    {{-- <section class="section-welcome section -full-height" style="background-image: linear-gradient(to top , rgba(0,0,0, 0.5) 0%, rgba(0,0,0,0.5) 100%) ,  url(clients/assets/img/bg-welcome.png);">
-        <div class="content">
-            <div class="logo-center">
-                <img src="clients/assets/img/logo_white_lg.png" alt="">
-            </div>
-        </div>
-    </section> --}}
 <section class="menu-section_masonry">
     <div class="container-fluid">
         <ul class="menu-filter_menu">
