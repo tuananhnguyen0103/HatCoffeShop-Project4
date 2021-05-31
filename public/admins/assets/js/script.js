@@ -191,3 +191,68 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$(document).ready(function(){
+    var totalList = $('#container').data('total-list');
+    var dayList = $('#container').data('day');
+    var listOfTotal = [];
+    var listOfDay = [];
+    totalList.forEach(element => {
+        listOfTotal.push(element/1);
+    });
+    dayList.forEach(element => {
+        listOfDay.push(element)
+    });
+    console.log(listOfTotal);
+    var chart =Highcharts.chart('container', {
+
+
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Doanh thu của quán'
+        },
+        subtitle: {
+          text: 'Tháng 6'
+        },
+        xAxis: {
+          categories:listOfDay
+        },
+        yAxis: {
+          title: {
+            text: 'Số tiền'
+          },
+          labels: {
+            formatter: function () {
+              return Intl.NumberFormat('en-US').format(this.value) + 'VND';
+            }
+          }
+        },
+        tooltip: {
+          crosshairs: true,
+          shared: true
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              radius: 4,
+              lineColor: '#666666',
+              lineWidth: 1
+            }
+          }
+        },
+        series: [{
+            color: '#333',
+            name: 'Hôm nay',
+            marker: {
+            symbol: 'cricle'
+          },
+          data:listOfTotal
+
+        }]
+      });
+})
+// Start Statistc
+
+// End Statistc

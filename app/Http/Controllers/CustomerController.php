@@ -112,7 +112,15 @@ class CustomerController extends Controller
         //dd($listBillDetail);
         $cartcontent = Cart::content();
         $total = Cart::subtotal(0,'.','');
-        Mail::to($request->customer_email)->send(new ThanksForChosing($cartcontent,$total));
+        $inforCustormer = [
+                'customer_name' =>$request->customer_name,#mail
+                'customer_phone_number' =>$request->customer_phone_number,//hash để mã hoá mật khẩu
+                'customer_date_buy'=>$date,
+                'customer_address' =>$request->customer_address,
+                'customer_email'=>$request->customer_email,
+        ];
+        //$inforCustormer =  json_encode($inforCustormer);
+        Mail::to($request->customer_email)->send(new ThanksForChosing($cartcontent,$total,$inforCustormer));
         Cart::destroy();
         //dd('Đã gửi');
         return view('client.customer.thankyou');

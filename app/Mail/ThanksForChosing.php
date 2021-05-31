@@ -18,11 +18,14 @@ class ThanksForChosing extends Mailable
      */
     private $cartcontent;
     private $total;
-    public function __construct($cartcontent , $total)
+    private $inforCustormer;
+
+    public function __construct($cartcontent , $total, $inforCustormer)
     {
         //
         $this->cartcontent = $cartcontent;
         $this->total = $total;
+        $this->inforCustormer= $inforCustormer;
 
     }
 
@@ -33,7 +36,8 @@ class ThanksForChosing extends Mailable
      */
     public function build()
     {
-        $data = ['cartcontent'=>$this->cartcontent,'total'=>$this->total];
+        // dd($this->inforCustormer["customer_name"]);
+        $data = ['cartcontent'=>$this->cartcontent,'total'=>$this->total,'inforCustormer'=>$this->inforCustormer];
 
         return $this->view('client.sites.email-thanks',$data);
     }

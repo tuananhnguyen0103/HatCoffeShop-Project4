@@ -6,15 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\Bill;
+use App\Models\Customers;
+use DateTime;
+use Illuminate\Contracts\Session\Session;
 
 
 
 use App\Http\Requests\admin\sites\registerRequest;
+use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
 
 class SiteController extends Controller
 {
     //
+
     public function login(){
         return view('admin.sites.login');
     }
@@ -58,9 +65,63 @@ class SiteController extends Controller
         session()->forget('id');
         return Redirect::route('admin-dashboard');
     }
+
+
     public function index(){
 
-        return view('admin.sites.index');
+
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $listDateOfMonth = [];
+        $maxDays=date('t');
+        for ($i=1; $i <= $maxDays; $i++) {
+            array_push($listDateOfMonth,$i);
+        }
+        //dd($listDateOfMonth);
+        $listTotalOfMonth = [];
+        // $totalBillOftheDay = Bill::where("Bills.bill_state","=","Hoàn thành")
+        // ->whereMonth('Bills.bills_sale_day',"=", date('m'))
+        // ->whereDay('Bills.bills_sale_day',"=", 17)
+        // ->get();
+        // $t = count($totalBillOftheDay);
+
+        // array_push($listTotalOfMonth,0);
+        // dd($listTotalOfMonth);
+        foreach ($listDateOfMonth as $key) {
+            $totalBillOftheDay = Bill::select(DB::raw('sum(Bills.bill_total) as total'))
+            ->where("Bills.bill_state","=","Hoàn thành")
+            ->whereMonth('Bills.bills_sale_day',"=", date('m'))
+            ->whereDay('Bills.bills_sale_day',"=", $key)
+            ->get();
+            if($totalBillOftheDay[0]->total===null){{
+                array_push($listTotalOfMonth,0);
+                continue;
+            }}
+                array_push($listTotalOfMonth,$totalBillOftheDay[0]->total);
+
+        }
+        $timestamp = strtotime('2009-10-22');
+        $listTotalOfMonth = json_encode($listTotalOfMonth);
+        $listDateOfMonth = json_encode($listDateOfMonth);
+        // dd(date('d',$timestamp));
+        // dd($listTotalOfMonth);
+
+
+
+        $resulstTotalBill = Bill::select(DB::raw('sum(Bills.bill_total) as total'))
+        ->where("Bills.bill_state","=","Hoàn thành")
+        ->get();
+
+        $resulstProduct = Product::select(DB::raw("count(*) as sum"))
+        ->get();
+
+        $resulstBill = Bill::select(DB::raw("count(*) as sum"))
+        ->get();
+
+
+        $sumProduct = $resulstProduct[0]->sum;
+        $totalMoney = $resulstTotalBill[0]->total;
+        $sumBill = $resulstBill[0]->sum;
+        return view('admin.sites.index',compact('totalMoney','sumProduct','sumBill','listTotalOfMonth','listDateOfMonth'));
     }
 
 }

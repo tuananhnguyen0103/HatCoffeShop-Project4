@@ -5,7 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Models\Staff;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bill;
 use Illuminate\Http\Request;
+
+use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Cart;
 
 class StaffController extends Controller
 {
@@ -17,9 +24,13 @@ class StaffController extends Controller
     public function index()
     {
         $staff = Staff::join('staff_types','staff_types.id','=','staff.staff_types_id')->get();
+        
         return view('admin.staff.index',compact('staff'));
     }
 
+    public function getTotalBill(){
+
+    }
     /**
      * Show the form for creating a new resource.
      *

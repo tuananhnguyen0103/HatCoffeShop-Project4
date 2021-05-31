@@ -83,41 +83,7 @@
                 <td style="padding: 0px 10px;">
                     <table width="480" align="center" style="margin: 0 auto;" cellpadding="0" cellspacing="0">
                         <!-- fix for gmail -->
-                        <tr>
-                            <td>
-                                <table width="480" cellpadding="0" cellspacing="0" style="width: 480px !important;">
-                                    <tr>
-                                        <td style="min-width: 480px; font-size: 0; line-height: 0;"></td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
 
-                        <!-- header -->
-
-                        <!-- img-block -->
-                        <tr>
-                            <td align="center" bgcolor="#fff" style="width: 480px;">
-                                <img
-                                    src="https://gallery.mailchimp.com/227964591a0bc1283160a5186/images/b1172d6d-ba5a-412b-9318-e82caeadce92.png"
-                                    alt=""
-                                    style="padding: 0px 0 0px; vertical-align: center; width: 480px; height: 480px;"
-                                    width="480"
-                                    height="480"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center" bgcolor="#fff" style="background-color: #fff;">
-                                <img
-                                    src="https://gallery.mailchimp.com/227964591a0bc1283160a5186/images/31542554-6e74-4513-b061-4622cd095763.png"
-                                    alt="order_details"
-                                    style="padding: 30px 0 60px; vertical-align: center; width: 127px; height: 41px;"
-                                    width="127"
-                                    height="41"
-                                />
-                            </td>
-                        </tr>
 
                         <!-- content -->
                         <tr>
@@ -125,9 +91,9 @@
                                 <table width="100%" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td align="center" colspan="4" style="font: lighter 35px/40px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #4a4a4a; padding: 0px 50px 40px;">
-                                            Order number:
+                                            Đơn hàng của bạn:
                                             <br />
-                                            <p style="font: lighter 24px/28px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #4a4a4a; margin: 0px;">65005056005</p>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -279,23 +245,19 @@
                                     <tr>
                                         <td class="no-link" align="center" width="50"></td>
                                         <td align="left" colspan="2" bgcolor="#F7F7F7" style="font: lighter 18px/24px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #5d5d5d; padding: 55px 50px; background-color: #f7f7f7;">
-                                            We’re getting your order ready and we’ll email you with the tracking information as soon as it’s out the door. Here’s where it’s headed.
-                                            <p style="font: 400 24px/30px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #4a4a4a; margin: 0px; padding: 20px 0px 0px;">Shipping address:</p>
-                                            Smiles Davis
+                                            Chúng tôi đã sẵn sàng cho đơn hàng của bạn, vui lòng kiểm tra lại thông tin của mình:
+                                            <p style="font: 400 24px/30px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #4a4a4a; margin: 0px; padding: 20px 0px 0px;">Thông tin đơn hàng:</p>
+                                            Anh/Chị: {{$inforCustormer["customer_name"]}}
                                             <br />
-                                            600 Montgomery St <br />
-                                            San Franscisco, CA 94111
-                                            <p>If you included an eero 6 or eero Pro 6 product on this order, the entire order will ship on or after November 2, 2020.</p>
+                                            SĐT: {{$inforCustormer["customer_phone_number"]}} <br />
+                                            Địa chỉ: {{$inforCustormer["customer_address"]}}
+                                            <p></p>
                                         </td>
                                         <td class="no-link" align="center" width="50"></td>
                                     </tr>
                                     <tr>
                                         <td colspan="4" align="center" bgcolor="#fff" style="font: 400 24px/29px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #4a4a4a; padding: 55px 50px; background-color: #fff;">
-                                            Questions about your order?
-                                            <p style="font: lighter 18px/24px Roboto, Source Sans Pro, Helvetica, Arial, sans-serif; color: #5d5d5d; margin: 0px; padding: 20px 0px 0px;">
-                                                Give us a call at <a href="tel:8776592347">(877) 659-2347</a> or <br />
-                                                email us at <a href="mailto:support@eero.com">support@eero.com</a>.
-                                            </p>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -307,7 +269,7 @@
                                                             <tr>
                                                                 <td class="active" width="18">
                                                                     <a
-                                                                        href="http://mail.eero.com/track/click/30727349/www.facebook.com?p=eyJzIjoic0RVNXZtTDllby1xbXVwclJvTE50Rks1QUM0IiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5mYWNlYm9vay5jb21cXFwvZWVyb1xcXC9cIixcImlkXCI6XCI5ZmRjYTBjOTEwMTM0YzJlOTg1MWY2NDM4OGQ2N2Q2MFwiLFwidXJsX2lkc1wiOltcImIwZTY2N2QzYzU5MzlmZGM1ZDFkMDlkMTIxYTA5NmYwNWQ0NGJlMDFcIl19In0"
+                                                                        href="https://www.facebook.com/Hatcafeandtea"
                                                                         target="_blank"
                                                                         style="text-decoration: none; color: #c4c4c4;"
                                                                     >
@@ -322,12 +284,12 @@
                                                                 <td width="30"></td>
                                                                 <td class="active" width="18">
                                                                     <a
-                                                                        href="http://mail.eero.com/track/click/30727349/twitter.com?p=eyJzIjoiWGxLWG1jNnB4RGZlY3hpQ25UUHdUcWxWRXh3IiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3R3aXR0ZXIuY29tXFxcL2dldGVlcm9cIixcImlkXCI6XCI5ZmRjYTBjOTEwMTM0YzJlOTg1MWY2NDM4OGQ2N2Q2MFwiLFwidXJsX2lkc1wiOltcIjYwZGVhNjgyMzI3ZjcxMjAzYzRjMWU2YjJiNDEwNzBhM2FmNWEzZGNcIl19In0"
+                                                                        href="http://127.0.0.1:8000/"
                                                                         target="_blank"
                                                                         style="text-decoration: none; color: #c4c4c4;"
                                                                     >
                                                                         <img
-                                                                            src="https://gallery.mailchimp.com/227964591a0bc1283160a5186/images/49de93dd-9322-477c-ba41-fb66587258d6.png"
+                                                                            src="https://scontent-hkt1-2.cdninstagram.com/v/t51.2885-19/s150x150/146566334_123030829628495_3318334775075690121_n.jpg?tp=1&_nc_ht=scontent-hkt1-2.cdninstagram.com&_nc_ohc=vO92e84tB1EAX8jyLzR&edm=ABfd0MgBAAAA&ccb=7-4&oh=7778f8caaca40fa21a752347a4b1cb32&oe=60BAED50&_nc_sid=7bff83"
                                                                             alt="tw"
                                                                             style="vertical-align: top; height: 23px; font: 12px/17px Arial, Helvetica, sans-serif;"
                                                                             height="23"
@@ -337,7 +299,7 @@
                                                                 <td width="30"></td>
                                                                 <td class="active" width="19">
                                                                     <a
-                                                                        href="http://mail.eero.com/track/click/30727349/www.instagram.com?p=eyJzIjoiNkdFMlVqN291b041ekxCaHN2TlM3NWd2ejJRIiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5pbnN0YWdyYW0uY29tXFxcL2dldGVlcm9cIixcImlkXCI6XCI5ZmRjYTBjOTEwMTM0YzJlOTg1MWY2NDM4OGQ2N2Q2MFwiLFwidXJsX2lkc1wiOltcImQ0ODdlMDNjNTg5OGMzOWIxNmU3YTkxMDM1YzQ0MmI4ZGI1ODFiYzNcIl19In0"
+                                                                        href="https://www.instagram.com/hatcafe882020/"
                                                                         target="_blank"
                                                                         style="text-decoration: none; color: #c4c4c4;"
                                                                     >
@@ -350,38 +312,11 @@
                                                                     </a>
                                                                 </td>
                                                                 <td width="30"></td>
-                                                                <td class="active" width="16">
-                                                                    <a
-                                                                        href="http://mail.eero.com/track/click/30727349/www.linkedin.com?p=eyJzIjoiRWlFSnVvaTZUVjFLS0Zha2lIRldWMWV6N1hvIiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5saW5rZWRpbi5jb21cXFwvY29tcGFueVxcXC9lZXJvXCIsXCJpZFwiOlwiOWZkY2EwYzkxMDEzNGMyZTk4NTFmNjQzODhkNjdkNjBcIixcInVybF9pZHNcIjpbXCIzN2Q3NjM0MDlmMzEwNjM4NzNhNThhZjgxMjllZGNkMWJlMmExYjkyXCJdfSJ9"
-                                                                        target="_blank"
-                                                                        style="text-decoration: none; color: #c4c4c4;"
-                                                                    >
-                                                                        <img
-                                                                            src="https://gallery.mailchimp.com/227964591a0bc1283160a5186/images/572457be-c24a-43e3-9cc7-cbe16a85aba8.png"
-                                                                            alt="li"
-                                                                            style="vertical-align: top; height: 23px; font: 12px/17px Arial, Helvetica, sans-serif;"
-                                                                            width="23"
-                                                                        />
-                                                                    </a>
-                                                                </td>
+
                                                             </tr>
                                                         </table>
                                                         <table width="100%" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td
-                                                                    colspan="4"
-                                                                    class="no-link"
-                                                                    align="center"
-                                                                    bgcolor="#001949"
-                                                                    style="font: 300 12px/18px Source Sans Pro, Helvetica, Arial, sans-serif; color: #acacac; padding: 40px 0px 30px;"
-                                                                >
-                                                                    <a
-                                                                        href="http://mail.eero.com/track/click/30727349/eero.com?p=eyJzIjoiaHo1TDZxSEZoZ2V6eXp4Z2RUeUd1OVFaRDlRIiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL2Vlcm8uY29tXCIsXCJpZFwiOlwiOWZkY2EwYzkxMDEzNGMyZTk4NTFmNjQzODhkNjdkNjBcIixcInVybF9pZHNcIjpbXCJiOTIxNmNlNDY0Y2MyOGRjZTBhYTE0YjI2YjE1NDkyMGNhODFlMTE1XCJdfSJ9"
-                                                                    >
-                                                                        <img src="https://gallery.mailchimp.com/227964591a0bc1283160a5186/images/cf812ccd-4cd8-46e1-aa5b-10ece5792f48.png" width="63" style="width: 63;" />
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
+
 
                                                             <!--
                                                         <tr>
@@ -457,8 +392,7 @@
                                                                         href="http://mail.eero.com/track/click/30727349/eero.com?p=eyJzIjoieFk1MmZRanF6SUpjWjNVNHZJcEl6TVV2MTlvIiwidiI6MSwicCI6IntcInVcIjozMDcyNzM0OSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL2Vlcm8uY29tXFxcL2xlZ2FsXFxcL3Rvc1wiLFwiaWRcIjpcIjlmZGNhMGM5MTAxMzRjMmU5ODUxZjY0Mzg4ZDY3ZDYwXCIsXCJ1cmxfaWRzXCI6W1wiN2JmOWIyNzlkMjQ5Y2M4ZjBhZmI0NDgzZTMxODAzODk3ODE5Y2Q5YVwiXX0ifQ"
                                                                         style="color: #ffffff;"
                                                                     >
-                                                                        © 2020 EERO LLC SAN FRANCISCO, CA<br />
-                                                                        TERMS/PRIVACY<br />
+
                                                                     </a>
                                                                 </td>
                                                             </tr>
