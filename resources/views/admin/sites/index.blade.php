@@ -93,6 +93,18 @@
 
                     <div class="card">
                         <div class="card-body">
+                            <form class="app-search d-none d-lg-block">
+                                <div class="position-relative">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="bx bx-search-alt"></span>
+                                    <select name="TenDanhSach">
+                                        <option>Tháng 1</option>
+                                        <option>Tháng 2</option>
+                                        <option>Tháng 3</option>
+                                        <option>Tháng 4</option>
+                                    </select>
+                                </div>
+                            </form>
                             <figure class="highcharts-figure" >
                                 <div id="container" data-total-list="{{$listTotalOfMonth}}" data-day = "{{$listDateOfMonth}}"></div>
 
