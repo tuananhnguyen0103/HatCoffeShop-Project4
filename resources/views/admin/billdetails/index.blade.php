@@ -154,7 +154,11 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Chi tiết đơn hàng</h4>
+                            <div style="display: flex;justify-content: space-between">
+                                <h4 class="card-title mb-4">Chi tiết đơn hàng</h4>
+                            <a class="btn btn-primary" href="{{url(route('export-to-pdf',$Bill->id))}}">Xuất file PDF</a>
+                            </div>
+
                             <div class="table-responsive">
                                 <table class="table table-nowrap table-hover mb-0">
                                     <thead>

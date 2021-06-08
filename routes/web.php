@@ -137,6 +137,8 @@ Route::prefix('/admin.shop')->group(function () {
         Route::get('done', [BillController::class,'BillStateDone'])->name('get-all-bill-done')->middleware('check.login');
 
         Route::get('detail/{id}', [BillDetailsController::class,'BillDetail'])->name('get-bill-detail')->middleware('check.login');
+        Route::get('detail/to-pdf/{id}', [BillDetailsController::class,'createPDF'])->name('export-to-pdf')->middleware('check.login');
+
 
         Route::any('accpected/{id}', [BillController::class,'SetBillStateToAccpected'])->name('set-bill-accpected')->middleware('check.login');
         Route::any('ship/{id}', [BillController::class,'SetBillStateToShip'])->name('set-bill-ship')->middleware('check.login');

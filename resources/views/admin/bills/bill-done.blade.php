@@ -75,6 +75,7 @@
                                         <td>{{$bill->staff_name}}</td>
                                         <td style="display: flex;">
                                             <a style="width: 50%; padding: 0rem 0.5rem 0rem 0rem; " href="{{(route('get-bill-detail', $bill->id))}}"><i style="font-size: 20px;" class="far fa-list-alt"></i></a>
+                                            <a style="width: 50%; padding: 0rem 0.5rem 0rem 0rem; " href="{{route('set-bill-cancel',$bill->id)}}"><i style="font-size: 20px;" class="fas fa-trash-alt"></i></a>
                                             {{-- <a style="width: 50%; padding: 0rem 0.5rem 0rem 0rem; " href="{{route('set-bill-remove',$bill->id)}}"><i style="font-size: 20px;" class="fas fa-trash-alt"></i></a> --}}
                                             {{-- <a style="width: 50%; padding: 0rem 0.5rem 0rem 0rem; " href="{{(route('get-bill-detail', $bill->id))}}"><i style="font-size: 20px;" class="far fa-list-alt"></i></a>
                                             <a style="width: 50%; padding: 0rem 0.5rem 0rem 0rem; " href="{{route('set-bill-process',$bill->id)}}"><i style="font-size: 20px;" class="fas fa-shipping-fast"></i></a>
