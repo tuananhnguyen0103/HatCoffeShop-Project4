@@ -83,6 +83,7 @@ Route::prefix('/admin.shop')->group(function () {
     // Đăng nhập sẽ kiểm tra đăng nhập hay chưa
     Route::get('', [SiteController::class,'index'])->name('admin-dashboard')->middleware('check.login');
     // Route::post('', [SiteController::class,'index'])->name('admin-dashboard')->middleware('auth');
+    Route::post('month', [SiteController::class,'getValueInMonth'])->name('admin-dashboard-month')->middleware('check.login');
 
     // Route return view login
     Route::get('login', [SiteController::class,'login'])->name('admin-login');
@@ -105,7 +106,7 @@ Route::prefix('/admin.shop')->group(function () {
     //     'product' => ProductController::class
     //     ]);
 
-    Route::prefix('/category')->middleware('check.login','check.manager')->group(function () {
+    Route::prefix('category')->middleware('check.login','check.manager')->group(function () {
         Route::get('', [CategoryController::class,'index'])->name('get-all-category');
         Route::get('create', [CategoryController::class,'create'])->name('create-categories');
         Route::post('create', [CategoryController::class,'doCreate'])->name('create-categories-done');
@@ -138,6 +139,7 @@ Route::prefix('/admin.shop')->group(function () {
 
         Route::get('detail/{id}', [BillDetailsController::class,'BillDetail'])->name('get-bill-detail')->middleware('check.login');
         Route::get('detail/to-pdf/{id}', [BillDetailsController::class,'createPDF'])->name('export-to-pdf')->middleware('check.login');
+        Route::get('detail/to-pdf-show/{id}', [BillDetailsController::class,'showPDF'])->name('show-to-pdf')->middleware('check.login');
 
 
         Route::any('accpected/{id}', [BillController::class,'SetBillStateToAccpected'])->name('set-bill-accpected')->middleware('check.login');

@@ -225,17 +225,13 @@ class ProductController extends Controller
     public function doUpdate(Request $request, $id)
     {
         $cate = Category::all();
-        $products =
-            Product::leftJoin('Sale_Prices', 'Products.id', '=', 'Sale_Prices.product_id')
-            ->where('Products.id',$id)
-            ->select('Products.*', 'Sale_Prices.sale_price_amount', 'Sale_Prices.sale_price_values')
-            ->get();
+
         Product::where('id',$id)
-                    ->update(['product_name'=>$request->product_name,
-                            'product_unit'=>$request->product_unit,
-                            'product_amout_imports'=>$request->product_imports,
-                            'categories_id'=>$request->categories_id,
-                            'product_description'=>$request->product_description]);
+                ->update(['product_name'=>$request->product_name,
+                        'product_unit'=>$request->product_unit,
+                        'product_amout_imports'=>$request->product_imports,
+                        'categories_id'=>$request->categories_id,
+                        'product_description'=>$request->product_description]);
         $saleUpdate = SalePrice::where('product_id',$id)
             ->orderByDesc('id')
             ->first();
@@ -252,7 +248,11 @@ class ProductController extends Controller
             "sale_price_values"=>$request->product_sale_price
             ]
         );
-
+        $products =
+        Product::leftJoin('Sale_Prices', 'Products.id', '=', 'Sale_Prices.product_id')
+        ->where('Products.id',$id)
+        ->select('Products.*', 'Sale_Prices.sale_price_amount', 'Sale_Prices.sale_price_values')
+        ->get();
         $product = $products[0];
         //dd($request);
         //echo('Thêm thành công');
@@ -316,7 +316,6 @@ class ProductController extends Controller
     // Thay vì lấy trực tiếp bên laravel thì mình lấy thông qua request
     public function UpdateCart(Request $id)
     {
-
         $product=Product::find($id->id);
         $qty=1;
         Cart::add([
@@ -331,9 +330,7 @@ class ProductController extends Controller
     }
     public function UpdateCartDetail(Request $request)
     {
-
         $product=Product::find($request->id);
-
         Cart::add([
             'id' => $request->id,
             'name' => $product->product_name,
@@ -370,7 +367,7 @@ class ProductController extends Controller
                 // return $key[1];
             }
         }
-        
+
         if($arrayDel!=null){
             foreach ($arrayDel as $key ) {
                 if ($key[0]=='_token') {
@@ -381,7 +378,7 @@ class ProductController extends Controller
                 // return $key[1];
             }
         }
-        
+
         // return redirect()->back();
     }
     public function deleteProductInCart($rowId)

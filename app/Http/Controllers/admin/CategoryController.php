@@ -62,24 +62,29 @@ class CategoryController extends Controller
         $request->validate([
             'categories_name'=>'required',
         ]);
-        $slug = explode(" ",$request->categories_name);
         $category_slug = Str::slug($request->categories_name,'-');
-        $parrent_node = $request->categories_id;
         // $info = array(
         //     "name" => $request->categories_name,
         //     "slug" => $category_slug,
         //     "desc" => $request->categories_desc,
         // );
        // dd($slug);
+        $imageName = $category_slug.'.'.$request->file('image')->extension();
+        $request->image->move(public_path('uploads/image/categories'), $imageName);
+        $imageName = 'uploads/image/categories/'.$imageName;
+        // dd($imageName);
         $query=Category::insert(
             [
                'categories_name' =>$request->categories_name,
                'categories_description' =>$request->categories_desc,
+               'categories_images'=>$imageName,
                'categories_slug' =>$category_slug,
                'categories_parent_node' =>$request->categories_id,
             ]
         );
-        return 1;
+        $category = Category::all();
+
+        return view('admin.categories.create', compact('category'));
     }
     /**
      * Store a newly created resource in storage.

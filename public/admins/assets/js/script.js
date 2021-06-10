@@ -29,34 +29,36 @@ $('#form-login').submit(function(){
     })
 })
 //Định nghĩa form thêm danh mục
-$('#form-add-category').submit(function(){
-    // Chặn ngăn trang chuyển tiếp
-    event.preventDefault();
-    // Lấy tất cả dữ liệu trong from vào trong biến data
-    var $data = $('#form-add-category').serialize();
-    // Sử dụng ajax
-    $.ajax({
-        type:'post',
-        // là route post của hành động này
-        url:'/admin.shop/category/create',
-        data:$data,
-        success:function(resultController){
+// $('#form-add-category').submit(function(){
+//     // Chặn ngăn trang chuyển tiếp
+//     event.preventDefault();
+//     // Lấy tất cả dữ liệu trong from vào trong biến data
+//     var $data = $('#form-add-category').serialize();
+//     console.log($data);
+//     // Sử dụng ajax
+//     $.ajax({
+//         type:'post',
+//         // là route post của hành động này
+//         url:'/admin.shop/category/create',
+//         data:$data,
+//         success:function(resultController){
 
-            if(resultController==1){
-                toastr.success('Thêm thành công');
-            $('#form-add-category')[0].reset();
-            }
+//             if(resultController==1){
+//                 toastr.success('Thêm thành công');
+//             $('#form-add-category')[0].reset();
+//             }
 
-        },
-        error:function(resultController){
-            var k=resultController.responseJSON;
-            for(var j in k.errors)
-                toastr.error(k.errors[j][0]);
-            toastr.error("Thêm không thành");
-        }
+//         },
+//         error:function(resultController){
+//             console.log(resultController);
+//             var k=resultController.responseJSON;
+//             for(var j in k.errors)
+//                 toastr.error(k.errors[j][0]);
+//             toastr.error("Thêm không thành, vui lòng điền đầy đủ thông tin");
+//         }
 
-    })
-})
+//     })
+// })
 $('#form-update-category').submit(function(){
     // Chặn ngăn trang chuyển tiếp
     event.preventDefault();
@@ -217,8 +219,11 @@ $(document).ready(function(){
           text: 'Tháng 6'
         },
         xAxis: {
-          categories:listOfDay
-        },
+            categories:listOfDay,
+            title:{
+                text: 'Ngày trong tháng'
+            }
+            },
         yAxis: {
           title: {
             text: 'Số tiền'
@@ -244,7 +249,7 @@ $(document).ready(function(){
         },
         series: [{
             color: '#333',
-            name: 'Hôm nay',
+            name: 'Số tiền',
             marker: {
             symbol: 'cricle'
           },
@@ -256,3 +261,130 @@ $(document).ready(function(){
 // Start Statistc
 
 // End Statistc
+
+$('#month-for-budget').change(function(){
+    event.preventDefault();
+    var jsVariable = '<%= Session[\"staff_name\"]%>';
+    console.log(jsVariable);
+    // console.log(sessionStorage);
+    // var value = $(this).val();
+    // sessionStorage.setItem("myVar",value);
+    // // conssol(value);
+    // console.log(sessionStorage.getItem("myVar"));
+    var $data = {'month':$(this).val()}
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+    $.ajax({
+        type:'post',
+        url:'/admin.shop/month',
+        data:$data,
+        success:function(resultController){
+           //$(rowTalbe).parent().parent().remove();
+            // alert($data['month'])
+            toastr.success("Vui lòng đợi");
+            console.log($data['month']);
+            console.log(resultController);
+            // window.location.reload();
+            var d = new Date();
+            var n = d.getMonth();
+            // Start Change
+            var totalList = resultController["list_total_of_month"];
+            var dayList =resultController["list_day_of_month"];
+            var month = resultController["month"];
+            // console.log(totalList);
+            // var arrayTotalList = Array.from(totalList);
+            // console.log(arrayTotalList);
+            // console.log(arrayTotalList[12]);
+            console.log(dayList[10]);
+            var listOfTotal = [];
+            var listOfDay = [];
+            totalList.forEach(element => {
+                listOfTotal.push(element/1);
+            });
+            dayList.forEach(element => {
+                listOfDay.push(element)
+            });
+            console.log(listOfTotal);
+
+            var chart =Highcharts.chart('container', {
+
+
+                chart: {
+                type: 'spline'
+                },
+                title: {
+                text: 'Doanh thu của quán'
+                },
+                subtitle: {
+                text: 'Tháng '+month
+                },
+                xAxis: {
+                categories:listOfDay,
+                title:{
+                    text: 'Ngày trong tháng'
+                }
+                },
+                yAxis: {
+                title: {
+                    text: 'Số tiền'
+                },
+                labels: {
+                    formatter: function () {
+                    return Intl.NumberFormat('en-US').format(this.value) + 'VND';
+                    }
+                }
+                },
+                tooltip: {
+                crosshairs: true,
+                shared: true
+                },
+                plotOptions: {
+                spline: {
+                    marker: {
+                    radius: 4,
+                    lineColor: '#666666',
+                    lineWidth: 1
+                    }
+                }
+                },
+                series: [{
+                    color: '#333',
+                    name: 'Số tiền',
+                    marker: {
+                    symbol: 'cricle'
+                },
+                data:listOfTotal
+
+                }]
+            });
+            // End Change
+        },
+        error:function(resultController){
+            console.log(resultController);
+            // var k=resultController.responseJSON;
+            // for(var j in k.errors)
+            //toastr.error(k.errors[j][0]);
+            toastr.error("Xóa không thành");
+        }
+    })
+});
+// window.addEventListener('beforeunload', function (e) {
+//     // var value = 0;
+//     // alert(sessionStorage.setItem("myVar",value));
+//     // sessionStorage.setItem("myVar",value);
+// });
+// window.onbeforeunload = function(e){
+//     var msg = 'Are you sure?';
+//     e = e || window.event;
+
+//     if(e)
+//         e.returnValue = msg;
+
+//     var value = 0;
+//     // alert(sessionStorage.setItem("myVar",value));
+//     // sessionStorage.setItem("myVar",value);
+//     return msg;
+// }

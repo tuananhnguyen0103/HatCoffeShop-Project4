@@ -31,7 +31,7 @@
                                 <h4 class="card-title">Thông tin cơ bản </h4>
                                 <p class="card-title-desc">Nhập thông tin vào bên dưới</p>
 
-                                <form id="form-add-category" >
+                                <form id="form-add-category" method="post"  action="{{route('create-categories-done')}}" enctype="multipart/form-data" >
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-6">
@@ -56,15 +56,32 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div>
+                                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                                <p>
+                                                    <label style="cursor: pointer;">
+                                                        Upload Image
+                                                    </label>
+                                                    <br>
+                                                    <label for="file">
+                                                        <i style="cursor: pointer;" class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="mb-3">
 
+                                            </div>
+                                            <p><img id="output" width="200" /></p>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+                                                <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+                                            </div>
 
                                         </div>
+
                                     </div>
 
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
-                                        <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button>
-                                    </div>
+
                                 </form>
 
                             </div>
@@ -95,4 +112,10 @@
             </div>
         </footer>
     </div>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        </script>
 @stop

@@ -63,7 +63,23 @@
                                                 </select>
                                             </div>
 
+                                            <div>
+                                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                                <p>
+                                                    <label style="cursor: pointer;">
+                                                        Upload Image
+                                                    </label>
+                                                    <br>
+                                                    <label for="file">
+                                                        <i style="cursor: pointer;" class="display-4 text-muted bx bxs-cloud-upload"></i>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="mb-3">
 
+                                            </div>
+                                            <p><img id="output" width="200" /></p>
+                                            
                                         </div>
                                     </div>
 
