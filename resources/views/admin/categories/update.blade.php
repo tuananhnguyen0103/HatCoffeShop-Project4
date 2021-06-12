@@ -31,10 +31,11 @@
                                 <h4 class="card-title">Thông tin cơ bản </h4>
                                 <p class="card-title-desc">Nhập thông tin vào bên dưới</p>
 
-                                <form id="form-update-category" >
+                                <form id="form-update-category"  enctype="multipart/form-data">
+                                    {{-- <form id="form-update-category" method="post"  action="{{route('update-categories-done')}}"  enctype="multipart/form-data"> --}}
                                     @csrf
                                     <div class="row">
-                                        <input type="hidden" name="id" value="{{$category->id}}">
+                                        <input type="hidden" name="id" value="{{$category->id}}" >
                                         <div class="col-sm-6">
                                             <div class="mb-3">
                                                 <label for="productname">Tên danh mục</label>
@@ -70,7 +71,7 @@
                                                         Upload Image
                                                     </label>
                                                     <br>
-                                                    <label for="file">
+                                                    <label name ="image_src_file" for="file">
                                                         <i style="cursor: pointer;" class="display-4 text-muted bx bxs-cloud-upload"></i>
                                                     </label>
                                                 </p>
@@ -78,8 +79,8 @@
                                             <div class="mb-3">
 
                                             </div>
-                                            <p><img id="output" width="200" /></p>
-                                            
+                                            <p><img id="output" width="200" name="image_src" src="{{ url('/') }}/{{$category->categories_images}}" /></p>
+
                                         </div>
                                     </div>
 
@@ -117,4 +118,10 @@
             </div>
         </footer>
     </div>
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        </script>
 @stop

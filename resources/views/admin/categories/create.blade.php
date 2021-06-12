@@ -31,7 +31,8 @@
                                 <h4 class="card-title">Thông tin cơ bản </h4>
                                 <p class="card-title-desc">Nhập thông tin vào bên dưới</p>
 
-                                <form id="form-add-category" method="post"  action="{{route('create-categories-done')}}" enctype="multipart/form-data" >
+                                <form id="form-add-category" enctype="multipart/form-data" >
+                                    {{-- <form id="form-add-category" method="post"  action="{{route('create-categories-done')}}" enctype="multipart/form-data" > --}}
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-6">

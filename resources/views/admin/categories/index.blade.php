@@ -54,7 +54,7 @@
 
                                         </td>
                                         <td style="display: flex;padding: 4rem .5rem;">
-                                            <a style="width: 50%; " onclick="softDelete({{$c->id}},this)" ><i style="font-size: 20px;" class="mdi mdi-trash-can-outline"></i></a>
+                                            <a style="width: 50%; "  id="{{$c->id}}" onclick="softDelete({{$c->id}},this)" ><i style="font-size: 20px;" class="mdi mdi-trash-can-outline"></i></a>
 
                                             <a style="width: 50%; " href="{{url(route('update-categories',$c->id))}}"><i style="font-size: 20px;" class="mdi mdi-file-edit"></i></a>
                                         </td>

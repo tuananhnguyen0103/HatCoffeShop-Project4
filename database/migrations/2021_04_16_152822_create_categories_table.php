@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('categories_name');
             $table->string('categories_slug')->nullable();
             $table->string('categories_parent_node',30);
-            $table->string('categories_images');
+            $table->string('categories_images')->nullable();
             $table->text('categories_description');
             // Trường categories_is_disable là soft delete của bảng categories
             $table->smallInteger('categories_is_disable')->default(0);

@@ -62,28 +62,39 @@ class CategoryController extends Controller
         $request->validate([
             'categories_name'=>'required',
         ]);
-        $category_slug = Str::slug($request->categories_name,'-');
-        // $info = array(
-        //     "name" => $request->categories_name,
-        //     "slug" => $category_slug,
-        //     "desc" => $request->categories_desc,
-        // );
-       // dd($slug);
-        $imageName = $category_slug.'.'.$request->file('image')->extension();
-        $request->image->move(public_path('uploads/image/categories'), $imageName);
-        $imageName = 'uploads/image/categories/'.$imageName;
-        // dd($imageName);
-        $query=Category::insert(
-            [
-               'categories_name' =>$request->categories_name,
-               'categories_description' =>$request->categories_desc,
-               'categories_images'=>$imageName,
-               'categories_slug' =>$category_slug,
-               'categories_parent_node' =>$request->categories_id,
-            ]
-        );
-        $category = Category::all();
 
+        if(!$request->image){
+            $category_slug = Str::slug($request->categories_name,'-');
+            $query=Category::insert(
+                [
+                   'categories_name' =>$request->categories_name,
+                   'categories_description' =>$request->categories_desc,
+                   'categories_slug' =>$category_slug,
+                   'categories_parent_node' =>$request->categories_id,
+                ]
+            );
+            // return view('admin.categories.index');
+        }
+        else{
+
+            $category_slug = Str::slug($request->categories_name,'-');
+            $imageName = $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path('uploads/image/categories'), time().'_'.$imageName);
+            $imageName =  'uploads/image/categories/'.time().'_'.$imageName;
+                    // dd($imageName);
+                    $query=Category::insert(
+                        [
+                           'categories_name' =>$request->categories_name,
+                           'categories_description' =>$request->categories_desc,
+                           'categories_images'=>$imageName,
+                           'categories_slug' =>$category_slug,
+                           'categories_parent_node' =>$request->categories_id,
+                        ]
+                    );
+
+
+        }
+        $category = Category::all();
         return view('admin.categories.create', compact('category'));
     }
     /**
@@ -134,17 +145,50 @@ class CategoryController extends Controller
         $categoryParent = Category::all()
                 ->where('categories_is_disable','=',0);
         $category = $categoryValue[0];
+        // dd($category);
         return view('admin.categories.update', compact('category','categoryParent'));
     }
 
     public function doUpdate(Request $request){
-
-        Category::where('id','=',$request->id)
+        // $fileName = time().'_'.$request->avt->getClientOriginalName();
+        if(!$request->image){
+            Category::where('id','=',$request->id)
                 ->update([
                     'categories_name' =>$request->categories_name,
                     'categories_description' =>$request->categories_desc,
                     'categories_parent_node' =>$request->categories_id,
                 ]);
+            // return view('admin.categories.index');
+        }
+        else{
+            $imageName = $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path('uploads/image/categories'), time().'_'.$imageName);
+            $imageName =  'uploads/image/categories/'.time().'_'.$imageName;
+            Category::where('id','=',$request->id)
+                    ->update([
+                        'categories_name' =>$request->categories_name,
+                        'categories_description' =>$request->categories_desc,
+                        'categories_images'=>$imageName,
+                        'categories_parent_node' =>$request->categories_id,
+                    ]);
+        }
+        // dd($request);
+        // return $request;
+        // $imageName = $request->file('image')->getClientOriginalName();
+        // $request->image->move(public_path('uploads/image/categories'), $imageName);
+        // $imageName = 'uploads/image/categories/'.$imageName;
+        // Category::where('id','=',$request->id)
+        //         ->update([
+        //             'categories_name' =>$request->categories_name,
+        //             'categories_description' =>$request->categories_desc,
+        //             'categories_images'=>$imageName,
+        //             'categories_parent_node' =>$request->categories_id,
+        //         ]);
+
+        //  $category = Category::all();
+        // return redirect('/admin.shop/category');
+
+        // return view('admin.categories.create', compact('category'));
     }
     /**
      * Remove the specified resource from storage.
@@ -154,11 +198,10 @@ class CategoryController extends Controller
      */
     public function softDelete(Request $request)
     {
-        //
+        // dd($request);
         Category::where('id','=',$request->id)
                 ->update(['categories_is_disable'=>1]);
-                $category = Category::all()
-                ->where('categories_is_disable','=',0);
+
         // //dd($category);
         // //$data = ["category"=>Category::all()];
         // return view('admin.categories.index', compact('category'));

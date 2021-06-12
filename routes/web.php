@@ -112,7 +112,7 @@ Route::prefix('/admin.shop')->group(function () {
         Route::post('create', [CategoryController::class,'doCreate'])->name('create-categories-done');
         Route::get('update/{id}', [CategoryController::class,'update'])->name('update-categories');
         Route::post('update', [CategoryController::class,'doUpdate'])->name('update-categories-done');
-        Route::get('delete', [CategoryController::class,'softDelete'])->name('softDelete');
+        Route::get('delete/{id}', [CategoryController::class,'softDelete'])->name('softDelete');
         Route::get('try', [CategoryController::class,'renametoSlug'])->name('renametoSlugCate');
     });
     Route::prefix('product')->middleware('check.login','check.manager')->group(function () {
@@ -122,7 +122,7 @@ Route::prefix('/admin.shop')->group(function () {
         Route::get('try', [ProductController::class,'renametoSlug'])->name('renametoSlug');
         Route::get('update/{id}', [ProductController::class,'update'])->name('update-product');
         Route::post('update/{id}', [ProductController::class,'doUpdate'])->name('update-product-done');
-        Route::get('delete', [ProductController::class,'softDelete'])->name('softDelete');
+        Route::get('delete/{id}', [ProductController::class,'softDelete'])->name('softDelete');
         //Chưa làm
 
 

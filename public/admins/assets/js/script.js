@@ -28,50 +28,62 @@ $('#form-login').submit(function(){
 
     })
 })
-//Định nghĩa form thêm danh mục
-// $('#form-add-category').submit(function(){
-//     // Chặn ngăn trang chuyển tiếp
-//     event.preventDefault();
-//     // Lấy tất cả dữ liệu trong from vào trong biến data
-//     var $data = $('#form-add-category').serialize();
-//     console.log($data);
-//     // Sử dụng ajax
-//     $.ajax({
-//         type:'post',
-//         // là route post của hành động này
-//         url:'/admin.shop/category/create',
-//         data:$data,
-//         success:function(resultController){
+// Định nghĩa form thêm danh mục
+$('#form-add-category').submit(function(){
+    // Chặn ngăn trang chuyển tiếp
+    event.preventDefault();
+    // Lấy tất cả dữ liệu trong from vào trong biến data
+    // var $data = $('#form-add-category').serialize();
+    var formData = new FormData($('#form-add-category')[0]);
+    // Sử dụng ajax
+    $.ajax({
+        type:'post',
+        async: false,
+        cache: false,
+        processData: false, // important
+        contentType: false,
+        // là route post của hành động này
+        url:'/admin.shop/category/create',
+        data:formData,
+        success:function(resultController){
+            console.log(resultController)
+            toastr.success('Thêm thành công');
+            window.location.href = '/admin.shop/category'
+            $('#form-add-category')[0].reset();
 
-//             if(resultController==1){
-//                 toastr.success('Thêm thành công');
-//             $('#form-add-category')[0].reset();
-//             }
 
-//         },
-//         error:function(resultController){
-//             console.log(resultController);
-//             var k=resultController.responseJSON;
-//             for(var j in k.errors)
-//                 toastr.error(k.errors[j][0]);
-//             toastr.error("Thêm không thành, vui lòng điền đầy đủ thông tin");
-//         }
+        },
+        error:function(resultController){
+            console.log(resultController);
+            var k=resultController.responseJSON;
+            for(var j in k.errors)
+                toastr.error(k.errors[j][0]);
+            toastr.error("Thêm không thành, vui lòng điền đầy đủ thông tin");
+        }
 
-//     })
-// })
+    })
+})
 $('#form-update-category').submit(function(){
     // Chặn ngăn trang chuyển tiếp
     event.preventDefault();
     // Lấy tất cả dữ liệu trong from vào trong biến data
-    var $data = $('#form-update-category').serialize();
+    // var $data = $('#form-update-category').serialize();
+    var formData = new FormData($('#form-update-category')[0]);
     // Sử dụng ajax
     $.ajax({
         type:'post',
+        async: false,
+        cache: false,
+        processData: false, // important
+        contentType: false,
         // là route post của hành động này
         url:'/admin.shop/category/update',
-        data:$data,
+        data: formData,
+        // dataType: 'json',
         success:function(resultController){
                 toastr.success('Sửa thành công');
+            window.location.href = '/admin.shop/category'
+            console.log(resultController);
             $('#form-update-category')[0].reset();
 
         },
@@ -79,22 +91,49 @@ $('#form-update-category').submit(function(){
             console.log(resultController)
             var k=resultController.responseJSON;
             for(var j in k.errors)
+            {
+                console.log(k.errors[j][0]);
                 toastr.error(k.errors[j][0]);
+
+            }
+
             toastr.error("Sửa không thành");
         }
 
     })
 })
 function softDelete(id,rowTalbe){
-    var data = {'id':id}
+    console.log(id);
+    var token = '{{ csrf_token() }}';
+    event.preventDefault();
+
+
     var table = $('#example').DataTable();
+            $('#example tbody').on( 'click', '.mdi-trash-can-outline', function () {
+                table.row( $(this).parents('tr') ).remove().draw();
+            } );
+    // $.ajaxSetup({
+    //     headers: {
+    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     }
+    // });
+    var data = {
+        'id':id,
+        '_token':$('meta[name="csrf-token"]').attr('content')
+    }
+    console.log(data);
     $.ajax({
         type:'get',
-        url:'/admin.shop/category/delete',
-        dataType: 'json',
-        data:data,
+        // async: false,
+        // cache: false,
+        // dataType : 'json',
+        // processData: false, // important
+        // contentType: false,
+        url:'/admin.shop/category/delete/'+id,
+        // data:data,
         success:function(resultController){
-            table.row($button.parents('tr')).clear().draw();
+            console.log(resultController)
+            // table.row($button.parents('tr')).clear().draw();
             //$(rowTalbe).parent().parent().remove();
             toastr.success("Xóa thành công");
 
@@ -108,6 +147,8 @@ function softDelete(id,rowTalbe){
         }
     })
 }
+
+
 // Định nghĩa form theem sản phẩm
 // $('#form-create-product').submit(function(){
 //     // Chặn ngăn trang chuyển tiếp
@@ -158,16 +199,24 @@ $('#form-update-product').submit(function(){
 
     })
 })
+
 function softDeleteProduct(id,rowTalbe){
     var data = {'id':id}
+    event.preventDefault();
+
+
+    var table = $('#example').DataTable();
+            $('#example tbody').on( 'click', '.mdi-trash-can-outline', function () {
+                table.row( $(this).parents('tr') ).remove().draw();
+            } );
     $.ajax({
         type:'get',
-        url:'/admin.shop/product/delete',
+        url:'/admin.shop/product/delete/'+id,
         data:data,
         success:function(resultController){
            //$(rowTalbe).parent().parent().remove();
             toastr.success("Xóa thành công");
-            window.location.reload();
+            // window.location.reload();
         },
         error:function(resultController){
             console.log(resultController);

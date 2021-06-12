@@ -88,8 +88,11 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        $cate = Category::where('categories_is_disable','><',0)->get();
+        $cate = Category::all()
+        ->where('categories_is_disable','=',0);
+        // dd($cate);
         return view('admin.product.create',compact('cate'));
+
     }
     public function renametoSlug(){
         $product = Product::all()->count();
