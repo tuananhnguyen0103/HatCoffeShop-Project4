@@ -123,6 +123,16 @@ class CustomerController extends Controller
         Mail::to($request->customer_email)->send(new ThanksForChosing($cartcontent,$total,$inforCustormer));
         Cart::destroy();
         //dd('Đã gửi');
+        // $email=[
+        //     'body'=>'Xin chào bạn',
+        //     'name'=>$order->name,
+        //     'image'=>$order->image,
+        //     'order'=>$array,
+        //     'total'=>$total
+        // ];
+        //     Mail::to($request->email)->send(new OrderShipped($email));
+        //     return Redirect::to('cart/payment_success');
+        // }
         return view('client.customer.thankyou');
     }
 

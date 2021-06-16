@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_DRIVER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,8 +84,8 @@ return [
     */
 
     'from' => [
-        'address' =>  'hatcafe@tk16food.com',
-        'name' =>  'Hạt cafe',
+        'address' => env('MAIL_FROM_ADDRESS', 'tuananh010320@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Thông báo đơn hàng'),
     ],
 
     /*
