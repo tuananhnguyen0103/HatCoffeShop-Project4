@@ -5,7 +5,7 @@
 
     {{-- <a href="{{route('user-mail')}}">  Gửi mail dmb</a> --}}
     @include('client.sites.menu')
-    <section class="section-about section -half -overlay50 -media1250" id="section-about">
+    {{-- <section class="section-about section -half -overlay50 -media1250" id="section-about">
         <div class="section-overlay-title rellax" data-rellax-speed="-1" data-rellax-percentage="0.5">
             <span>About us</span>
         </div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     @include('client.sites.our-gallery')
     <section class="section section-social -pd_bot_0" id="section-social">
         <div class="container-fluid">
@@ -47,194 +47,20 @@
                          <a href="https://www.instagram.com/hatcafe882020/"><h2>Instagram </h2></a>
                     </div>
                     <div class="section-descr -verticalMd">
-                            At vero eos et accusamus et iusto odio dignissimos ducmus qui blanditiis praesentium voluptatum dele
+                            Những hình ảnh trên instagram của quán
                     </div>
-                    <a href="https://www.instagram.com/hatcafe882020/" class="btn btn-primary btn-md -verticalMd">View on Instagram</a>
+                    <a href="https://www.instagram.com/hatcafe882020/" class="btn btn-primary btn-md -verticalMd">Xem trên Instagram</a>
                 </div>
             </div>
             <div class="social">
                 <div class="row social-row">
+                    @foreach(File::glob(public_path('/uploads/image/banners').'/*') as $path)
                     <div class="col-md-1 col-sm-3 col-xs-6">
                         <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
+                            <div class="img" style="background-image: url({{ str_replace(public_path(), '', $path) }}"></div>
                         </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_coffe.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_green.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/fake_img_grey_a7.png);"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-1 col-sm-3 col-xs-6">
-                        <div class="social-item">
-                            <div class="img" style="background-image: url(img/img-cup_pair.png);"></div>
-                        </div>
-                    </div>
-
+                    </div><img src="">
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -242,7 +68,7 @@
 
     <footer class="footer">
         <div class="footer-copyright text-center">
-            Next Door Coffee 2018
+            Hạt Cafe 2020
         </div>
     </footer>
 </div>

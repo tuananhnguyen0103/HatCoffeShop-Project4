@@ -119,5 +119,12 @@ $bill_details = array(
   array('id' => '107','product_id' => '11','product_quantity' => '1','product_total' => '35000','bill_id' => '31','created_at' => NULL,'updated_at' => NULL),
   array('id' => '108','product_id' => '16','product_quantity' => '3','product_total' => '105000','bill_id' => '31','created_at' => NULL,'updated_at' => NULL),
   array('id' => '109','product_id' => '14','product_quantity' => '1','product_total' => '35000','bill_id' => '31','created_at' => NULL,'updated_at' => NULL),
-  array('id' => '110','product_id' => '12','product_quantity' => '1','product_total' => '35000','bill_id' => '31','created_at' => NULL,'updated_at' => NULL)
+  array('id' => '110','product_id' => '12','product_quantity' => '1','product_total' => '35000','bill_id' => '31','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '111','product_id' => '11','product_quantity' => '1','product_total' => '35000','bill_id' => '32','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '112','product_id' => '13','product_quantity' => '1','product_total' => '35000','bill_id' => '32','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '113','product_id' => '12','product_quantity' => '1','product_total' => '35000','bill_id' => '32','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '114','product_id' => '14','product_quantity' => '1','product_total' => '35000','bill_id' => '32','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '115','product_id' => '11','product_quantity' => '1','product_total' => '35000','bill_id' => '33','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '116','product_id' => '12','product_quantity' => '1','product_total' => '35000','bill_id' => '33','created_at' => NULL,'updated_at' => NULL),
+  array('id' => '117','product_id' => '13','product_quantity' => '1','product_total' => '35000','bill_id' => '33','created_at' => NULL,'updated_at' => NULL)
 );

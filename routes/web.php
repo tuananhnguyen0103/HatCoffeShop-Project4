@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\SiteController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\BillDetailsController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PostController;
 use App\Models\BillDetails;
 use App\Models\Category;
 // use Gloudemans\Shoppingcart\Cart;
@@ -57,7 +58,7 @@ Route::prefix('/')->group(function () {
     Route::get('register', [CustomerController::class,'register'])->name('user-register');
     Route::post('register-post', [CustomerController::class,'registerPost'])->name('user-register-post');
 
-
+    
     //Test mail
     // Route::get('mail-send', [CustomerController::class,'sendMail'])->name('user-mail');
 
@@ -149,9 +150,15 @@ Route::prefix('/admin.shop')->group(function () {
         Route::any('done/{id}', [BillController::class,'SetBillStateToDone'])->name('set-bill-done')->middleware('check.login');
 
     });
-    Route::prefix('staff')->group(function () {
-        Route::get('', [StaffController::class,'index'])->name('staff')->middleware('check.login');
-        Route::get('pro', [StaffController::class,'index'])->name('staff')->middleware('check.login');
+    Route::prefix('staff')->middleware('check.login','check.manager')->group(function () {
+        Route::get('', [StaffController::class,'index'])->name('staff');
+        Route::get('profile/{id}', [StaffController::class,'profile'])->name('profile-staff');
+        Route::get('create', [StaffController::class,'create'])->name('create-staff');
+        Route::post('create', [StaffController::class,'createStaff'])->name('create-staff-done');
     });
-
+    Route::prefix('post')->middleware('check.login','check.manager')->group(function () {
+                Route::get('profile/{id}', [PostController::class,'profile'])->name('profile-post');
+        Route::get('create', [PostController::class,'create'])->name('create-post');
+        Route::post('create', [PostController::class,'doCreate'])->name('create-post-done');
+    });
 });

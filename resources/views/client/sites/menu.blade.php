@@ -16,13 +16,11 @@
                       <!-- Nav tabs -->
                       <ul class="nav nav-tabs text-center" role="tablist">
                         <?php
-
                             $numOut =0;
                         ?>
                           @foreach ($cate as  $c)
                           <?php
                                 $numOut++;
-
                           ?>
                             @if ($numOut==1)
                                 <li role="presentation" class="active">

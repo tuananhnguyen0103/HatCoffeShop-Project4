@@ -1,3 +1,5 @@
+// const { isUndefined } = require("lodash");
+
 // Định nghĩa form login
 $('#form-login').submit(function(){
     // Chặn ngăn trang chuyển tiếp
@@ -437,3 +439,212 @@ $('#month-for-budget').change(function(){
 //     // sessionStorage.setItem("myVar",value);
 //     return msg;
 // }
+
+
+
+//  Start Stafff
+function showProfile(id){
+    event.preventDefault();
+
+    $.ajax({
+        type:'get',
+        url:'/admin.shop/staff/profile/'+id,
+        data:data,
+        success:function(resultController){
+            console.log(resultController);
+           //$(rowTalbe).parent().parent().remove();
+            // toastr.success("Xóa thành công");
+            // window.location.reload();
+        },
+        error:function(resultController){
+            console.log(resultController);
+            // var k=resultController.responseJSON;
+            // for(var j in k.errors)
+            //toastr.error(k.errors[j][0]);
+            toastr.error("Xóa không thành");
+        }
+    })
+}
+
+$('#form-create-staff').submit(function(event){
+    event.preventDefault();
+    var checknumber = 0;
+    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+    var mobile = $('#phone-staff').val();
+    if(mobile !==''){
+        if (vnf_regex.test(mobile) == false)
+        {
+            toastr.error("Số điện thoại bạn không đúng định dạng");
+            checknumber++;
+        }
+    }else{
+        toastr.error("Bạn vui lòng nhập số điện thoại");
+        checknumber++;
+    }
+    var passRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+    var password = $('#password-staff').val();
+    if(password !==''){
+        if(passRegex.test(password)==false){
+            toastr.error("Mật khẩu phải kí tự đặc biệt, chữ in hoa, số và chữ cái viết thường");
+            checknumber++;
+        }
+    }else{
+        toastr.error("Bạn vui lòng nhập mật khẩu");
+        checknumber++;
+    }
+    var passcheck = $('#password-check-staff').val();
+    if(passcheck !== ''){
+        if(passcheck !== password){
+            toastr.error("Mật khẩu không trùng nhau");
+            checknumber++;
+        }
+    }
+    else{
+        toastr.error("Trường Nhập lại mật khẩu không được để trống");
+        checknumber++;
+    }
+
+    var emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var email = $('#email-staff').val();
+    if(email !==''){
+        if(emailRegex.test(email)==false){
+            toastr.error("Email nhập sai định dạng");
+        }
+    }else{
+        toastr.error("Bạn vui lòng nhập email");
+    }
+    var accountRegex = /([a-zA-z0-9])/gm;
+    var account = $('account-staff').val();
+    if(account !== ''){
+        if(accountRegex.test(account)==false){
+            toastr.error("Tài khoản không được có khoảng trắng");
+        }
+    }
+    else{
+        toastr.error("Bạn vui lòng nhập tài khoản");
+    }
+
+    var nameRegex =/([a-zA-z0-9 ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼẾỀỂưăạảấầẩẫậắằẳẵặẹẻẽếềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ])/ug;
+    var name = $('#name-staff').val();
+    if(name !== ''){
+        if(nameRegex.test(name)==false){
+            toastr.error("Tên không được có khoảng trắng");
+            checknumber++;
+        }
+    }
+    else{
+        toastr.error("Bạn vui lòng nhập tên");
+        checknumber++;
+    }
+    var image = $('#file').val();
+    if(image==''){
+        toastr.error("Vui lòng chọn ảnh");
+        checknumber++;
+    }
+    var date = new Date($('#staff-birthdays').val());
+    if(date.toString()=="Invalid Date"){
+        toastr.error("Bạn vui lòng nhập ngày sinh");
+        checknumber++;
+    }
+    console.log(checknumber)
+
+    if(checknumber===0){
+        // Chặn ngăn trang chuyển tiếp
+    event.preventDefault();
+    // Lấy tất cả dữ liệu trong from vào trong biến data
+    // var $data = $('#form-add-category').serialize();
+    var formData = new FormData($('#form-create-staff')[0]);
+
+
+
+    // Sử dụng ajax
+    $.ajax({
+        type:'post',
+        async: false,
+        cache: false,
+        processData: false, // important
+        contentType: false,
+        // là route post của hành động này
+        url:'/admin.shop/staff/create',
+        data:formData,
+        success:function(resultController){
+            console.log(resultController)
+            toastr.success('Thêm thành công');
+            window.location.href = '/admin.shop/staff'
+            // $('#form-add-category')[0].reset();
+
+
+        },
+        error:function(resultController){
+            console.log(resultController);
+            var k=resultController.responseJSON;
+            for(var j in k.errors)
+                toastr.error(k.errors[j][0]);
+            toastr.error("Thêm không thành, vui lòng điền đầy đủ thông tin");
+        }
+
+    })
+    }
+    // Lấy tất cả dữ liệu trong from vào trong biến data
+
+    // console.log(formData);
+})
+//  End Staff
+
+
+/// Start Post
+$('#form-add-post').submit(function(event){
+    var checknumber = 0;
+    var image = $('#file').val();
+    if(image==''){
+        toastr.error("Vui lòng chọn ảnh");
+        checknumber++;
+    }
+    var postdesc = $('#post_desc').val();
+    if(postdesc==''){
+        toastr.error("Vui lòng điền thông tin");
+        checknumber++;
+    }
+    var postcategories = $('#categories_id').val();
+    if(postdesc==0){
+        toastr.error("Vui lòng chọn mục");
+        checknumber++;
+    }
+    event.preventDefault();
+    if(checknumber===0){
+        // Chặn ngăn trang chuyển tiếp
+    event.preventDefault();
+    // Lấy tất cả dữ liệu trong from vào trong biến data
+    // var $data = $('#form-add-category').serialize();
+    var formData = new FormData($('#form-add-post')[0]);
+
+    // Sử dụng ajax
+    $.ajax({
+        type:'post',
+        async: false,
+        cache: false,
+        processData: false, // important
+        contentType: false,
+        // là route post của hành động này
+        url:'/admin.shop/post/create',
+        data:formData,
+        success:function(resultController){
+            console.log(resultController)
+            toastr.success('Thêm thành công');
+            // window.location.href = '/admin.shop/staff'
+            // $('#form-add-category')[0].reset();
+
+
+        },
+        error:function(resultController){
+            console.log(resultController);
+            var k=resultController.responseJSON;
+            for(var j in k.errors)
+                toastr.error(k.errors[j][0]);
+            toastr.error("Thêm không thành, vui lòng điền đầy đủ thông tin");
+        }
+
+    })
+    }
+})
+/// End Post

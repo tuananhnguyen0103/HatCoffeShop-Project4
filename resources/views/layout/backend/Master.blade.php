@@ -12,7 +12,7 @@
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <base href="{{ asset('') }}admins/">
-        <link rel="shortcut icon" href="/uploads/image/banners/logo-tittle.png">
+  
 
         <!-- Bootstrap Css -->
         <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="assets/css/statistic.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-
+        <link rel="shortcut icon" href="{{ url('/') }}/uploads/image/banners/logo-tittle-2.jpg">
         <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     </head>
 

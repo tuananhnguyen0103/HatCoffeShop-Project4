@@ -16,7 +16,7 @@
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Contacts</a></li>
+                                            <li class="breadcrumb-item"><a href="{{url(route('create-staff'))}}"><i class="bx bx-add-to-queue" style="font-size: 1rem"></i> Thêm nhân viên</a></li>
                                             <li class="breadcrumb-item active">Danh sách nhân viên</li>
                                         </ol>
                                     </div>
@@ -34,7 +34,7 @@
                                         <div class="avatar-sm mx-auto mb-4" style=" background-size: 100%; background-image: url(/{{$st->staff_image}})">
                                         </div>
 
-                                        <h5 class="font-size-15 mb-1"><a href="#" class="text-dark">{{$st->staff_name}}</a></h5>
+                                        <h5 class="font-size-15 mb-1"><a href="{{url(route('profile-staff',$st->id))}}"  class="text-dark">{{$st->staff_name}}</a></h5>
                                         <p class="text-muted" style="max-width: 100%; height: 1.6rem; overflow: hidden;">{{$st->staff_types_name}}</p>
                                         <div>
                                             <a href="#" class="badge bg-primary font-size-11 m-1">{{$st->staff_sex}}</a>

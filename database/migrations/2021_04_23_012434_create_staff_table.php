@@ -17,7 +17,6 @@ class CreateStaffTable extends Migration
             $table->id();
             $table->string('staff_name');
             $table->integer('staff_types_id');
-            // $table->foreign('staff_types_id')->references('staff_types_id')->on('staff_types')->onUpdate('cascade')->onDelete('cascade');
             $table->string('staff_image');
             $table->string('staff_sex');
             $table->date('staff_birthday');

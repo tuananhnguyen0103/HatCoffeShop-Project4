@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -55,7 +56,8 @@ class ProductController extends Controller
                         ->get();
         //$cate2 = $cate[0]->categorie;
         //dd($cate);
-        return view('client.sites.index',compact('product','cate'));
+        $post = post::all();
+        return view('client.sites.index',compact('product','cate','post'));
 
     }
     public function menu()
