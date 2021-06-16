@@ -61,7 +61,7 @@
                         </td>
                         <td style="width: 35%;">{{$item->qty}}</td>
                         <td style="width: 20%;" class="text-center">
-                            <span class="checkout-table_price">{{$item->price}}</span>
+                            <span class="checkout-table_price">{{$item->price*$item->qty}}</span>
                         </td>
                       </tr>
                       @endforeach
@@ -71,7 +71,7 @@
                     <h5 class="checkout-total_title">Thanh toán:</h5>
                     <div class="checkout-total_price">{{ number_format(str_replace(',', '', Cart::priceTotal()), 0, '', ',') }}VND</div>
                 </div>
-                
+
                 <button type="submit"  class="btn btn-md btn-primary btn-ico btn-upper -mg_rt10" value='place order'>
                     <span>Đặt hàng</span>
                 </button>
