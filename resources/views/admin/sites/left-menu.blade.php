@@ -10,7 +10,7 @@
 
                 <li>
                     <a href="{{route('admin-dashboard')}}" class="waves-effect">
-                        <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end">04</span>
+                        <i class="bx bx-home-circle"></i><span class="badge rounded-pill bg-info float-end"></span>
                         <span key="t-dashboards">Tổng quan</span>
                     </a>
                     {{-- <ul class="sub-menu" aria-expanded="false">
@@ -34,9 +34,7 @@
                         <li><a href="{{route('get-all-category')}}" key="t-orders">Loại Sản Phẩm</a></li>
                         <li><a href="{{route('get-all-product')}}" key="t-products">Sản phẩm</a></li>
                         <li><a href="{{route('staff')}}" key="t-customers">Nhân Viên</a></li>
-                        <li><a href="ecommerce-cart.html" key="t-cart">Cart</a></li>
-                        <li><a href="ecommerce-checkout.html" key="t-checkout">Checkout</a></li>
-                        <li><a href="ecommerce-shops.html" key="t-shops">Shops</a></li>
+
                     </ul>
                 </li>
                 @endif

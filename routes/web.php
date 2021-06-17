@@ -58,7 +58,7 @@ Route::prefix('/')->group(function () {
     Route::get('register', [CustomerController::class,'register'])->name('user-register');
     Route::post('register-post', [CustomerController::class,'registerPost'])->name('user-register-post');
 
-    
+
     //Test mail
     // Route::get('mail-send', [CustomerController::class,'sendMail'])->name('user-mail');
 
@@ -126,7 +126,6 @@ Route::prefix('/admin.shop')->group(function () {
         Route::get('delete/{id}', [ProductController::class,'softDelete'])->name('softDelete');
         //Chưa làm
 
-
     });
     Route::prefix('bill')->group(function () {
         Route::get('', [BillController::class,'index'])->name('get-all-bill')->middleware('check.login');
@@ -157,7 +156,7 @@ Route::prefix('/admin.shop')->group(function () {
         Route::post('create', [StaffController::class,'createStaff'])->name('create-staff-done');
     });
     Route::prefix('post')->middleware('check.login','check.manager')->group(function () {
-                Route::get('profile/{id}', [PostController::class,'profile'])->name('profile-post');
+        Route::get('profile/{id}', [PostController::class,'profile'])->name('profile-post');
         Route::get('create', [PostController::class,'create'])->name('create-post');
         Route::post('create', [PostController::class,'doCreate'])->name('create-post-done');
     });
