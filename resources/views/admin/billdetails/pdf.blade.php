@@ -20,10 +20,10 @@
             ?>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Sản Phẩm </th>
-                <th scope="col">Giá Bán(VND)</th>
-                <th scope="col">Số lượng </th>
-                <th scope="col">Tổng Cộng(VND)</th>
+                <th scope="col">San Pham </th>
+                <th scope="col">Gia Ban(VND)</th>
+                <th scope="col">So luong </th>
+                <th scope="col">Tong Cong(VND)</th>
             </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@
 
     <div class="card-body">
         <p>Thông tin đơn hàng</p>
-        <p class="text-muted mb-5">Thông tin chi tiếtt: {{$Bill->bill_descriptions}}</p>
+        <p class="text-muted mb-5">Thông tin chi tiết: {{$Bill->bill_descriptions}}</p>
         <div class="table-responsive">
             <table class="table table-nowrap mb-0">
                 <tbody>

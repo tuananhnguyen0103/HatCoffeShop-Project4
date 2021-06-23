@@ -90,7 +90,7 @@ class BillDetailsController extends Controller
         // retreive all records from db
         // dd($id);
         $Bill = Bill::join('Customers','Bills.bill_custormer_id','=','Customers.id')
-                    ->select('Bills.id','Bills.bill_descriptions','Bills.bills_sale_day','Bills.bill_pay_day',
+                    ->select('Bills.id','Bills.bill_descriptions','Bills.bills_sale_day','Bills.bill_pay_day','Bills.bill_total',
                             'Customers.customer_name','Customers.customer_phone_number','Customers.customer_email','Customers.customer_address')
                     ->where('Bills.id','=',$id)->get()[0];
         // $Bill = Bill::all();
@@ -153,7 +153,7 @@ class BillDetailsController extends Controller
             $staffSetCancel = "Chưa có nhân viên";
         }
         $arrayStaff = [$staffSetAccepeted,$staffSetShip,$staffSetShipping,$staffSetDone,$staffSetCancel];
-
+        // dd($Bill);
         // $data = Employee::all();
         $data = array(
             'Bill' => $Bill,
